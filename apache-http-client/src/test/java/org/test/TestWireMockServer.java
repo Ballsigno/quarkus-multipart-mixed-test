@@ -2,12 +2,15 @@ package org.test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aMultipart;
 import static com.github.tomakehurst.wiremock.client.WireMock.binaryEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.ok;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
 
 import java.util.Map;
+
+import org.apache.hc.core5.http.HttpHeaders;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 
@@ -22,7 +25,8 @@ public class TestWireMockServer implements QuarkusTestResourceLifecycleManager {
         wireMockServer.start();
 
         // for Multipart Request
-        wireMockServer.stubFor(post("/rest-easy-classic")
+        wireMockServer.stubFor(post("/apache-http-client")
+                .withHeader(HttpHeaders.CONTENT_TYPE, containing("multipart/mixed"))
                 .withMultipartRequestBody(
                         aMultipart().withName("file")
                                 .withBody(binaryEqualTo("file contents.".getBytes())))

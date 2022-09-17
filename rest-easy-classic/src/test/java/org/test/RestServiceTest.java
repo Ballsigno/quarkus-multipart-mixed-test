@@ -24,7 +24,7 @@ import io.quarkus.test.junit.QuarkusTest;
 @QuarkusTest
 @QuarkusTestResource(TestWireMockServer.class)
 @TestMethodOrder(OrderAnnotation.class)
-public class RestServiceTest {
+class RestServiceTest {
 
     @Inject
     @RestClient
@@ -36,7 +36,7 @@ public class RestServiceTest {
     @Test
     @Order(1)
     @DisplayName("multipart/form-data, use annotation.")
-    public void testCase1() {
+    void testCase1() {
         MultipartBody body = createMultipartBody();
         String response = restService.postMultipartFormData(body);
 
@@ -49,7 +49,7 @@ public class RestServiceTest {
     @Test
     @Order(2)
     @DisplayName("multipart/*, use annotation.")
-    public void testCase2() {
+    void testCase2() {
         MultipartBody body = createMultipartBody();
         String response = restService.postMultipartAsterisk(body);
 
@@ -63,7 +63,7 @@ public class RestServiceTest {
     @Test
     @Order(3)
     @DisplayName("multipart/mixed, use annotation.")
-    public void testCase3() {
+    void testCase3() {
 
         MultipartBody body = createMultipartBody();
         String response = restService.postMultipartMixed(body);
@@ -77,7 +77,7 @@ public class RestServiceTest {
     @Test
     @Order(4)
     @DisplayName("multipart/form-data, not use annotation.")
-    public void testCase4() {
+    void testCase4() {
         MultipartBody body = createMultipartBody();
 
         MultipartFormDataOutput output = new MultipartFormDataOutput();
@@ -97,7 +97,7 @@ public class RestServiceTest {
     @Test
     @Order(5)
     @DisplayName("multipart/mixed, not use annotation.")
-    public void testCase5() {
+    void testCase5() {
         MultipartBody body = createMultipartBody();
 
         MultipartOutput output = new MultipartOutput();

@@ -19,7 +19,6 @@ public class TestWireMockServer implements QuarkusTestResourceLifecycleManager {
 
     @Override
     public Map<String, String> start() {
-        // WireMockServerを起動
         wireMockServer.start();
 
         // for Multipart Request

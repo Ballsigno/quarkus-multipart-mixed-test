@@ -27,7 +27,7 @@ import io.quarkus.test.junit.QuarkusTest;
 @QuarkusTest
 @QuarkusTestResource(TestWireMockServer.class)
 @TestMethodOrder(OrderAnnotation.class)
-public class RestServiceTest {
+class RestServiceTest {
 
     @RestClient
     RestService restService;
@@ -38,7 +38,7 @@ public class RestServiceTest {
     @Test
     @Order(1)
     @DisplayName("multipart/form-data, use annotation.")
-    public void testCase1() {
+    void testCase1() {
         MultipartBody body = createMultipartBody();
         String response = restService.postMultipartFormData(body);
 
@@ -51,7 +51,7 @@ public class RestServiceTest {
     @Test
     @Order(2)
     @DisplayName("multipart/form-data, not use annotation.")
-    public void testCase2() {
+    void testCase2() {
         // build my rest client
         RestService thisRestService = RestClientBuilder.newBuilder()
                 .baseUri(URI.create("http://localhost:8099/"))
@@ -76,7 +76,7 @@ public class RestServiceTest {
     @Test
     @Order(3)
     @DisplayName("multipart/mixed, not use annotation.")
-    public void testCase3() {
+    void testCase3() {
         // build my rest client
         RestService thisRestService = RestClientBuilder.newBuilder()
                 .baseUri(URI.create("http://localhost:8099/"))
