@@ -1,6 +1,6 @@
 # quarkus-multipart-mixed-test
 
-This is a sample project for github discussions.
+For: https://github.com/quarkusio/quarkus/issues/28026
 
 ↓ Test Result.
 
